@@ -1,13 +1,17 @@
 ECE510 Codefest 2 — Project Algorithm Profiling
 
 Algorithm: Tiled Matrix Multiplication (INT8 GEMM)
-Hardware:  Intel Core i7-13700H, 10 cores (20 threads), x86_64
+Hardware: Intel Core i7-13700H, 10 cores (20 threads), x86_64
 Profiler: cProfile (-s cumtime)
 
 ------------------------------------------------------------
 
+Profiling Setup:
+The project algorithm was profiled across 10 runs using cProfile.
+A representative profiling summary is shown below.
+
 Execution Summary:
-Tiled GEMM (pure Python) time: ~1750 us
+Tiled GEMM (pure Python) median runtime over 10 runs: 1676.95 us
 
 ------------------------------------------------------------
 
@@ -29,9 +33,11 @@ The innermost operation is:
 
     C[i][j] += A[i][k] * B[k][j]
 
-This represents a multiply-accumulate (MAC) operation, repeated across all elements of the matrices.
+This represents a multiply-accumulate (MAC) operation repeated across all elements of the matrices.
 
-Although functions such as random number generation appear in profiling, they are not part of the algorithmic kernel and are excluded from analysis.
+Although functions such as random number generation appear in the profiling output, they are related to input generation and are not part of the algorithmic kernel. Therefore, they are excluded from the kernel analysis.
+
+Across the profiled runs, tiled_gemm() accounts for the largest share of algorithm runtime among the relevant computational functions.
 
 ------------------------------------------------------------
 

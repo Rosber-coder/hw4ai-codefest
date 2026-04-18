@@ -64,3 +64,5 @@ This indicates that the interface must support at least approximately 24 GB/s to
 ## Conclusion
 
 Based on profiling and roofline analysis, the GEMM kernel is memory-bound on the target CPU and is the primary candidate for hardware acceleration. Offloading the MAC operations to hardware is expected to significantly improve performance by increasing compute parallelism and improving data reuse, provided that sufficient interface bandwidth is available.
+
+The chosen interface is AXI4-Stream. Using a 512-bit AXI4-Stream interface at 400 MHz gives a rated bandwidth of 25.6 GB/s. Since the required bandwidth is approximately 24 GB/s, this interface operating point is sufficient and the accelerator would not be interface-bound. In contrast, a 256-bit AXI4-Stream interface at 250 MHz would provide only 8 GB/s and would make the design interface-bound.

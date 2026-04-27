@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1777262033" />
+    <testcase name="test_int8_gemm_core_basic" classname="test_int8_gemm_core" file="/home/roshan/hw4ai-codefest/project/hdl/test_int8_gemm_core.py" lineno="6" time="0.0011527538299560547" sim_time_ns="60.0" ratio_time="52049.274043433295" />
+  </testsuite>
+</testsuites>

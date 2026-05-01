@@ -1,4 +1,36 @@
-module interface_module (
+/*
+ * Module: interface_ctrl
+ *
+ * Purpose:
+ *   Memory-mapped interface to control compute_core.
+ *
+ * Protocol:
+ *   Simple valid/ready handshake (always-ready).
+ *
+ * Register Map:
+ *   0x00 : operand A
+ *   0x04 : operand B
+ *   0x08 : control (bit[0] = start)
+ *   0x0C : result
+ *
+ * Ports:
+ *   clk        : clock
+ *   rst        : active-high synchronous reset
+ *   valid      : request valid
+ *   ready      : always ready
+ *   write      : write enable
+ *   addr       : address
+ *   wdata      : write data
+ *   rdata      : read data
+ *   core_valid : trigger to compute core
+ *   core_a     : operand A
+ *   core_b     : operand B
+ *   core_out   : result from compute core
+ */
+
+
+
+module interface_ctrl (
     input  wire clk,
     input  wire rst,
 

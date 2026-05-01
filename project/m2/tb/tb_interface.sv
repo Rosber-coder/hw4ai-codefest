@@ -16,7 +16,7 @@ module tb_interface;
     wire signed [7:0] core_b;
     reg  signed [31:0] core_out;
 
-    interface_module dut (
+    interface_ctrl dut (
         .clk(clk),
         .rst(rst),
         .valid(valid),

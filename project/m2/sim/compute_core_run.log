@@ -1,0 +1,3 @@
+VCD info: dumpfile project/m2/sim/compute_core.vcd opened for output.
+PASS: compute_core output matched expected value.
+Expected = 13, DUT Output = 13

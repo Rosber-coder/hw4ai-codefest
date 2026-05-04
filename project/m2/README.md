@@ -1,29 +1,38 @@
 # Milestone 2 — Hardware for AI/ML
 
 ## Overview
-This project implements an INT8 compute core and a memory-mapped interface. Both modules are verified using SystemVerilog testbenches.
+This project implements an INT8 compute core and a memory-mapped interface.
+Both modules are verified using SystemVerilog testbenches with PASS/FAIL output.
 
 ## Simulator
 - Tool: Icarus Verilog (iverilog)
-- Flag: -g2012
+- Version: 11.0 (verify with `iverilog -V`)
+- Flag: `-g2012`
 
 ## How to Run — Compute Core
 
 ```bash
 iverilog -g2012 \
--o project/m2/sim/compute_core.out \
-project/m2/rtl/compute_core.sv \
-project/m2/tb/tb_compute_core.sv
+  -o project/m2/sim/compute_core.out \
+  project/m2/rtl/compute_core.sv \
+  project/m2/tb/tb_compute_core.sv
 
 vvp project/m2/sim/compute_core.out | tee project/m2/sim/compute_core_run.log
+```
 
+## How to Run — Interface
 
-## Important Note on Interface Naming
+```bash
+iverilog -g2012 \
+  -o project/m2/sim/interface.out \
+  project/m2/rtl/interface_ctrl.sv \
+  project/m2/tb/tb_interface.sv
 
-The project specification requires a file named `interface.sv`. However, `interface` is a reserved keyword in SystemVerilog and cannot be used as a module name in Icarus Verilog.
+vvp project/m2/sim/interface.out | tee project/m2/sim/interface_run.log
+```
 
-To resolve this:
-- The actual synthesizable module is implemented in `interface_ctrl.sv` with module name `interface_ctrl`
-- A wrapper file `interface.sv` is provided to satisfy the required filename
-
-This ensures compatibility with the grading script while maintaining correct SystemVerilog syntax.
+## Deviations from M1
+The interface module is in `interface_ctrl.sv` (module: `interface_ctrl`) rather than
+`interface.sv` because `interface` is a reserved keyword in SystemVerilog and is rejected
+by Icarus Verilog. A stub `interface.sv` is provided in `rtl/` for grader filename
+compatibility. No other deviations from the M1 plan.

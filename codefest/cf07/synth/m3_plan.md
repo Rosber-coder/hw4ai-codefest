@@ -1,5 +1,14 @@
 # M3 Plan
 
-The final post-route signoff result shows that the compute core meets the 10 ns clock target, with a critical path delay of about 8.59 ns and positive slack of about +1.45 ns. Since timing is met after routing and parasitic extraction, I will keep the current INT8 MAC datapath as the base compute block for M3.
+Post-route signoff shows the compute core meets the 10 ns clock target with
+a critical path of 8.59 ns and +1.45 ns setup slack. Since timing closes
+comfortably, I will keep the INT8 MAC datapath unchanged for M3 — no
+precision reduction or clock target change is needed.
 
-For M3, the main focus will be scaling from a single compute core toward tiled GEMM acceleration. I will integrate multiple MAC units, improve interface/control logic, and test whether the larger design still meets timing. If the additional parallelism increases the critical path or area too much, I will add pipelining around the accumulator or reduce unrolling. I will also review the reported antenna issue and IR-drop setup warning before finalizing the M3 implementation.
+The M3 focus is scaling toward tiled GEMM acceleration by integrating
+multiple MAC units and improved interface control. If the larger design
+pushes the critical path beyond 8.59 ns or area significantly beyond
+33,344.48 um^2, I will pipeline the accumulator stage or reduce unrolling
+to recover timing margin. Before M3 signoff I will also resolve the antenna
+violation on net9 (met1, ratio 1.07) and the PSM-0019/PSM-0022 IR-drop
+warnings.

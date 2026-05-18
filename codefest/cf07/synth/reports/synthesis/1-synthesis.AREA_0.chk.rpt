@@ -1,0 +1,36 @@
+
+60. Executing CHECK pass (checking for obvious problems).
+Checking module synth_top...
+Warning: Wire synth_top.\out [31] is used but has no driver.
+Warning: Wire synth_top.\out [30] is used but has no driver.
+Warning: Wire synth_top.\out [29] is used but has no driver.
+Warning: Wire synth_top.\out [28] is used but has no driver.
+Warning: Wire synth_top.\out [27] is used but has no driver.
+Warning: Wire synth_top.\out [26] is used but has no driver.
+Warning: Wire synth_top.\out [25] is used but has no driver.
+Warning: Wire synth_top.\out [24] is used but has no driver.
+Warning: Wire synth_top.\out [23] is used but has no driver.
+Warning: Wire synth_top.\out [22] is used but has no driver.
+Warning: Wire synth_top.\out [21] is used but has no driver.
+Warning: Wire synth_top.\out [20] is used but has no driver.
+Warning: Wire synth_top.\out [19] is used but has no driver.
+Warning: Wire synth_top.\out [18] is used but has no driver.
+Warning: Wire synth_top.\out [17] is used but has no driver.
+Warning: Wire synth_top.\out [16] is used but has no driver.
+Warning: Wire synth_top.\out [15] is used but has no driver.
+Warning: Wire synth_top.\out [14] is used but has no driver.
+Warning: Wire synth_top.\out [13] is used but has no driver.
+Warning: Wire synth_top.\out [12] is used but has no driver.
+Warning: Wire synth_top.\out [11] is used but has no driver.
+Warning: Wire synth_top.\out [10] is used but has no driver.
+Warning: Wire synth_top.\out [9] is used but has no driver.
+Warning: Wire synth_top.\out [8] is used but has no driver.
+Warning: Wire synth_top.\out [7] is used but has no driver.
+Warning: Wire synth_top.\out [6] is used but has no driver.
+Warning: Wire synth_top.\out [5] is used but has no driver.
+Warning: Wire synth_top.\out [4] is used but has no driver.
+Warning: Wire synth_top.\out [3] is used but has no driver.
+Warning: Wire synth_top.\out [2] is used but has no driver.
+Warning: Wire synth_top.\out [1] is used but has no driver.
+Warning: Wire synth_top.\out [0] is used but has no driver.
+Found and reported 32 problems.

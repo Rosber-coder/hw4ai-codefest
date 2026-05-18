@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/roshan/hw4ai-codefest/codefest/cf07/openlane/runs/RUN_2026-05-17_20-22-11/tmp/75caa79a8d164ea0b8947b7af9e8400b.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/roshan/hw4ai-codefest/codefest/cf07/openlane/runs/RUN_2026-05-17_20-22-11/tmp/75caa79a8d164ea0b8947b7af9e8400b.bb.v"

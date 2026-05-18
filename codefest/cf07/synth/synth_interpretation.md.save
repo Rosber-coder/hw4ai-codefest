@@ -1,9 +1,0 @@
-# Synthesis Interpretation
-
-The OpenLane flow was run on the INT8 MAC compute core using the SKY130 HD standard cell library with a 10 ns clock target. The final post-route signoff timing report shows that timing was met, with a worst-case critical path delay of approximately 8.59 ns and positive slack of about +1.45 ns. Therefore, the design meets the 100 MHz target after placement, routing, parasitic extraction, and signoff STA.
-
-The critical path is from input port b[2] to flip-flop _1293_. The path passes through arithmetic/control logic used in the signed multiply-accumulate datapath. The dominant cells along the reported path include AOI/OAI-style combinational gates such as a211o, or4b, and o211a cells. This confirms that the main delay is not from clocking or memory, but from the combinational datapath logic feeding the registered accumulator/output logic.
-
-The final design contains 3985 total cells with a core area of approximately 33344.48 um^2. Important cell contributors include 469 D flip-flops, 175 OR gates, 88 NOR gates, 64 XOR gates, and 50 multiplexers. The design also reports clean setup and hold timing at the typical corner, with no DRC or LVS errors.
-
-Warnings worth tracking include blackboxed filler/tap/decap cells during STA, missing VSRC_LOC_FILES for accurate IR drop estimation, and one pin/net antenna violation reported in the manufacturability report. Th

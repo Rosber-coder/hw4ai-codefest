@@ -69,3 +69,6 @@ cd ~/hw4ai-codefest/project/m3/synth
 
 openlane --dockerized config.json 2>&1 | tee openlane_run.log
 
+
+OpenLane Release Tag:
+- v2.3.10

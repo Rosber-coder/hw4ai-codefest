@@ -1,26 +1,17 @@
-# Milestone 3 – Integration and Synthesis
+# Milestone 3 Synthesis Notes and Scope Status
 
-## Overview
+Milestone 3 focused on integrating the separately verified M2 interface controller and compute core into one complete end-to-end design. The integrated top-level module is `project/m3/rtl/top.sv`. It instantiates the M2 `interface_ctrl` module and the M2 `compute_core` module without using stubs. The interface exposes a simple memory-mapped host protocol using `valid`, `ready`, `write`, `addr`, `wdata`, and `rdata`. The compute core implements the signed INT8 multiply-accumulate operation, which is the basic datapath used for the GEMM/MAC workload discussed in the earlier milestones.
 
-Milestone 3 integrates the M2 interface controller and compute core into a single top-level design and verifies end-to-end functionality through co-simulation. The integrated design was then synthesized using OpenLane 2.
+The integration was completed without adding extra FIFO logic, clock-domain crossing logic, or width-conversion logic. Both the interface and compute core operate in the same clock domain using `clk` and synchronous active-high reset `rst`. The top module wires `core_valid`, `core_a`, and `core_b` from the interface into the compute core. The compute core returns `core_out` back into the interface, and the host reads that result through address `0x0C`. Therefore, the data path demonstrated in M3 is host to interface, interface to compute core, compute core back to interface, and interface back to host.
 
-The design implements a simple memory-mapped host interface connected to an INT8 multiply-accumulate (MAC) compute core representing the dominant GEMM/MAC kernel used throughout the project.
+The end-to-end co-simulation is implemented in `project/m3/tb/tb_top.sv`. The testbench uses host-style read and write tasks instead of directly driving compute-core internals. Earlier, the test used a single MAC operation with A = 3 and B = 4. To better align with the M1 dominant GEMM/MAC kernel, the testbench is being updated to perform repeated MAC operations through the interface. This better represents the accumulation behavior used in a GEMM inner product. The expected result is computed independently in the testbench and compared against the DUT readback result. The simulation log in `project/m3/sim/cosim_run.log` records the PASS/FAIL result.
 
----
+The waveform output is saved under `project/m3/sim/`. It shows the host-side write transactions, the internal compute activity, and the host-side readback transaction. The important evidence is that the testbench writes operands and control values only through the interface, the compute core receives valid input operands from the interface, the internal output accumulates, and the final result is read back through the memory-mapped result register. This demonstrates that the interface is not being bypassed.
 
-## Simulator Information
+OpenLane 2 synthesis was performed using the Dockerized OpenLane flow. The local pip-installed OpenLane setup initially failed because the local Yosys executable did not support the `-y` option used by OpenLane’s JSON header step. After switching to Dockerized OpenLane, the flow completed successfully through all stages. The full stdout/stderr transcript is committed as `project/m3/synth/openlane_run.log`. The OpenLane configuration is committed as `project/m3/synth/config.json`, with design name `top`, clock port `clk`, a 10 ns clock period, and the RTL source list including `top.sv`, `compute_core.sv`, and `interface_ctrl.sv`.
 
-Simulator Used:
-- Icarus Verilog (iverilog)
+The synthesis and implementation reports were generated and copied into the required M3 paths. The timing report is committed as `project/m3/synth/timing_report.txt`. It reports a worst setup path from register `_1425_` to register `_1456_`, both clocked by `clk`, with positive slack of approximately 3.682910 ns for the 10 ns clock constraint. This means the integrated design meets timing for the reported nominal setup path. The area report is committed as `project/m3/synth/area_report.txt` and reports 774 standard cells for the synthesized `top` design. The power report is committed as `project/m3/synth/power_report.txt` and reports total power of approximately `7.150443e-04 W`, including sequential, combinational, clock, and leakage contributions.
 
-Simulation Command:
+The critical path is discussed in `project/m3/synth/critical_path.md`. The report identifies the start and endpoint registers and explains the expected datapath behavior between them. Based on the RTL, the most timing-sensitive portion is the compute datapath, where signed INT8 operands are multiplied, sign-extended, and accumulated into the 32-bit output register. This path is more complex than the interface address decode logic, because the interface mainly performs register writes, register reads, and muxing based on address. For M4, the main timing improvement would be to pipeline the multiply-accumulate operation by registering the product before the accumulator update. This would reduce combinational delay per cycle, although it would add one cycle of latency.
 
-```bash
-iverilog -g2012 \
-project/m2/rtl/compute_core.sv \
-project/m2/rtl/interface_ctrl.sv \
-project/m3/rtl/top.sv \
-project/m3/tb/tb_top.sv \
--o project/m3/sim/cosim.out
-
-vvp project/m3/sim/cosim.out
+No project scope was removed for M3. The submitted design still follows the original project direction: an INT8 MAC-based accelerator building block for GEMM-style AI workloads. The design is intentionally small, but it proves the required integration path and successfully pushes the integrated RTL through OpenLane. For M4, the synthesis, timing, area, and power results from this milestone will serve as the baseline for optimization and comparison.

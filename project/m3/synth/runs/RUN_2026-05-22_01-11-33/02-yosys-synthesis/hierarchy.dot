@@ -1,0 +1,37 @@
+digraph "top" {
+label="top";
+rankdir="LR";
+remincross=true;
+n1 [ shape=diamond, label="core_out", color="black", fontcolor="black"];
+n2 [ shape=diamond, label="core_b", color="black", fontcolor="black"];
+n3 [ shape=diamond, label="core_a", color="black", fontcolor="black"];
+n4 [ shape=diamond, label="core_valid", color="black", fontcolor="black"];
+n5 [ shape=octagon, label="rdata", color="black", fontcolor="black"];
+n6 [ shape=octagon, label="wdata", color="black", fontcolor="black"];
+n7 [ shape=octagon, label="addr", color="black", fontcolor="black"];
+n8 [ shape=octagon, label="write", color="black", fontcolor="black"];
+n9 [ shape=octagon, label="ready", color="black", fontcolor="black"];
+n10 [ shape=octagon, label="valid", color="black", fontcolor="black"];
+n11 [ shape=octagon, label="rst", color="black", fontcolor="black"];
+n12 [ shape=octagon, label="clk", color="black", fontcolor="black"];
+c16 [ shape=record, label="{{<p13> a|<p14> b|<p12> clk|<p11> rst|<p10> valid}|u_compute\ncompute_core|{<p15> out}}",  ];
+c17 [ shape=record, label="{{<p7> addr|<p12> clk|<p1> core_out|<p11> rst|<p10> valid|<p6> wdata|<p8> write}|u_interface\ninterface_ctrl|{<p3> core_a|<p2> core_b|<p4> core_valid|<p5> rdata|<p9> ready}}",  ];
+c16:p15:e -> n1:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n1:e -> c17:p1:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n10:e -> c17:p10:w [color="black", fontcolor="black", label=""];
+n11:e -> c16:p11:w [color="black", fontcolor="black", label=""];
+n11:e -> c17:p11:w [color="black", fontcolor="black", label=""];
+n12:e -> c16:p12:w [color="black", fontcolor="black", label=""];
+n12:e -> c17:p12:w [color="black", fontcolor="black", label=""];
+c17:p2:e -> n2:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n2:e -> c16:p14:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c17:p3:e -> n3:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n3:e -> c16:p13:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c17:p4:e -> n4:w [color="black", fontcolor="black", label=""];
+n4:e -> c16:p10:w [color="black", fontcolor="black", label=""];
+c17:p5:e -> n5:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n6:e -> c17:p6:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n7:e -> c17:p7:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n8:e -> c17:p8:w [color="black", fontcolor="black", label=""];
+c17:p9:e -> n9:w [color="black", fontcolor="black", label=""];
+}

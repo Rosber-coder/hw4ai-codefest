@@ -1,0 +1,7 @@
+# Critical Path Identification
+
+The worst reported setup path starts at register `_1425_` and ends at register `_1456_`, both clocked by `clk`. The reported slack for this path is `3.682910 ns`, so the design meets the 10 ns clock constraint for this path.
+
+This path is part of the synthesized integrated `top` design, which connects the memory-mapped `interface_ctrl` module to the INT8 MAC `compute_core`. Based on the RTL structure, the most timing-critical logic is expected to be around the compute datapath, where the signed INT8 operands are multiplied, sign-extended, and accumulated into the 32-bit output register. This is more complex than the interface address decoding logic, because the interface mostly contains simple register writes, register reads, and address-based muxing.
+
+The critical path is important because the dominant kernel in this project is MAC/GEMM-style computation. The path reflects the hardware cost of moving from input operand registers through combinational compute logic into the output accumulation register. To improve timing in the next milestone, the multiply and accumulate operation can be split into pipeline stages. For example, the product can be registered first, and the accumulator update can happen in the following cycle. This would reduce the combinational delay per cycle and allow a shorter clock period, at the cost of one extra cycle of latency.

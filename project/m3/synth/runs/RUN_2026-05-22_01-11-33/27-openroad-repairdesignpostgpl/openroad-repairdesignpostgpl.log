@@ -1,0 +1,67 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/23-openroad-globalplacement/top.odb'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2
+[INFO] Setting input delay to: 2
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO RSZ-0027] Inserted 19 input buffers.
+[INFO RSZ-0028] Inserted 32 output buffers.
+[INFO RSZ-0058] Using max wire length 6335um.
+Iteration | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------
+        0 |       0 |       0 |             0 |       870
+      100 |      94 |       0 |             0 |       770
+      200 |     188 |       5 |             1 |       670
+      300 |     278 |       5 |             1 |       570
+      400 |     370 |       5 |             1 |       470
+      500 |     451 |       5 |             1 |       370
+      600 |     550 |       8 |             2 |       270
+      700 |     646 |      13 |             4 |       170
+      800 |     784 |      53 |            21 |        70
+    final |     813 |      65 |            23 |         0
+---------------------------------------------------------
+[INFO RSZ-0034] Found 1 slew violations.
+[INFO RSZ-0035] Found 22 fanout violations.
+[INFO RSZ-0038] Inserted 65 buffers in 23 nets.
+[INFO RSZ-0039] Resized 813 instances.
+[INFO RSZ-0042] Inserted 1 tie sky130_fd_sc_hd__conb_1 instances.
+Placement Analysis
+---------------------------------
+total displacement       1617.4 u
+average displacement        1.1 u
+max displacement            5.7 u
+original HPWL           17229.3 u
+legalized HPWL          18451.4 u
+delta HPWL                    7 %
+
+[INFO DPL-0020] Mirrored 298 instances
+[INFO DPL-0021] HPWL before           18451.4 u
+[INFO DPL-0022] HPWL after            17918.2 u
+[INFO DPL-0023] HPWL delta               -2.9 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               130     487.97
+  Tap cell                                469     586.81
+  Timing Repair Buffer                    116     621.85
+  Inverter                                 12      45.04
+  Sequential cell                          81    1624.06
+  Multi-Input combinational cell          681    5139.93
+  Total                                  1489    8505.66
+Writing OpenROAD database to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/27-openroad-repairdesignpostgpl/top.odb'…
+Writing netlist to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/27-openroad-repairdesignpostgpl/top.nl.v'…
+Writing powered netlist to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/27-openroad-repairdesignpostgpl/top.pnl.v'…
+Writing layout to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/27-openroad-repairdesignpostgpl/top.def'…
+Writing timing constraints to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/27-openroad-repairdesignpostgpl/top.sdc'…

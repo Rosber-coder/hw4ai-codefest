@@ -1,0 +1,22 @@
+{
+    "nl": null,
+    "pnl": null,
+    "pnl-sdf-friendly": null,
+    "pnl-npc": null,
+    "def": null,
+    "lef": null,
+    "openroad-lef": null,
+    "odb": null,
+    "sdc": null,
+    "sdf": null,
+    "spef": null,
+    "lib": null,
+    "spice": null,
+    "mag": null,
+    "gds": null,
+    "mag_gds": null,
+    "klayout_gds": null,
+    "json_h": "/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_01-11-33/01-yosys-jsonheader/top.h.json",
+    "vh": null,
+    "metrics": {}
+}

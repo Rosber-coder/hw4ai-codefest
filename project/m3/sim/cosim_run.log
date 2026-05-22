@@ -1,0 +1,4 @@
+VCD info: dumpfile project/m3/sim/cosim_waveform.vcd opened for output.
+Expected result = 12
+DUT result      = 12
+PASS: End-to-end host-interface-compute-host test passed

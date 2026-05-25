@@ -1,0 +1,127 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/30-openroad-cts/top.odb'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2
+[INFO] Setting input delay to: 2
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO RSZ-0094] Found 20 endpoints with setup violations.
+[INFO RSZ-0099] Repairing 20 out of 20 (100.00%) violating endpoints...
+   Iter   | Removed | Resized | Inserted | Cloned |  Pin  |    WNS   |   TNS      |  Viol  | Worst
+          | Buffers |  Gates  | Buffers  |  Gates | Swaps |          |            | Endpts | Endpt
+---------------------------------------------------------------------------------------------------
+        0 |       0 |       0 |        0 |      0 |     0 |   -4.156 |      -55.2 |     20 | _1456_/D
+       10 |       1 |       8 |        0 |      0 |     0 |   -3.107 |      -36.4 |     20 | _1456_/D
+       20 |       1 |      14 |        2 |      0 |     3 |   -2.915 |      -34.5 |     20 | _1456_/D
+       30 |       1 |      20 |        6 |      0 |     5 |   -2.783 |      -32.3 |     20 | _1456_/D
+       40 |       1 |      25 |       11 |      0 |     8 |   -2.890 |      -40.4 |     20 | _1456_/D
+       50 |       1 |      33 |       11 |      0 |    10 |   -2.714 |      -38.5 |     20 | _1460_/D
+       60 |       1 |      38 |       11 |      1 |    14 |   -2.369 |      -30.2 |     20 | _1463_/D
+       70 |       1 |      41 |       14 |      1 |    20 |   -2.233 |      -29.2 |     20 | _1463_/D
+       80 |       1 |      48 |       17 |      1 |    22 |   -2.112 |      -27.6 |     20 | _1463_/D
+       90 |       1 |      54 |       21 |      1 |    25 |   -2.056 |      -27.2 |     20 | _1463_/D
+      100 |       1 |      62 |       21 |      1 |    27 |   -2.073 |      -27.3 |     20 | _1463_/D
+      110 |       1 |      66 |       23 |      2 |    31 |   -2.025 |      -26.7 |     20 | _1456_/D
+      111 |       1 |      66 |       23 |      2 |    28 |   -1.985 |      -26.6 |     20 | _1456_/D
+      113 |       1 |      66 |       23 |      2 |    28 |   -1.985 |      -26.6 |     20 | _1456_/D
+      117 |       1 |      66 |       23 |      2 |    30 |   -1.985 |      -26.6 |     20 | _1456_/D
+      120 |       1 |      67 |       23 |      2 |    31 |   -2.001 |      -26.6 |     20 | _1456_/D
+      120 |       1 |      66 |       23 |      2 |    30 |   -1.985 |      -26.6 |     20 | _1456_/D
+      123 |       1 |      67 |       23 |      2 |    30 |   -1.985 |      -26.5 |     20 | _1456_/D
+      130 |       1 |      70 |       23 |      2 |    33 |   -2.008 |      -26.5 |     20 | _1463_/D
+      130 |       1 |      67 |       23 |      2 |    30 |   -1.985 |      -26.5 |     20 | _1456_/D
+      138 |       1 |      68 |       23 |      2 |    30 |   -1.985 |      -26.5 |     20 | _1456_/D
+      140 |       1 |      68 |       23 |      2 |    31 |   -1.985 |      -26.5 |     20 | _1456_/D
+      140 |       1 |      68 |       23 |      2 |    31 |   -1.985 |      -26.5 |     20 | _1456_/D
+      145 |       1 |      69 |       23 |      2 |    31 |   -1.985 |      -26.5 |     20 | _1456_/D
+      148 |       1 |      69 |       23 |      2 |    32 |   -1.985 |      -26.5 |     20 | _1456_/D
+      150 |       1 |      69 |       23 |      2 |    33 |   -1.985 |      -26.5 |     20 | _1456_/D
+      150 |       1 |      69 |       23 |      2 |    33 |   -1.985 |      -26.5 |     20 | _1456_/D
+      152 |       1 |      69 |       23 |      2 |    33 |   -1.985 |      -26.5 |     20 | _1456_/D
+      160 |       1 |      76 |       23 |      2 |    33 |   -1.987 |      -25.3 |     20 | _1456_/D
+      170 |       1 |      82 |       25 |      2 |    36 |   -1.995 |      -23.2 |     20 | _1456_/D
+      173 |       1 |      75 |       24 |      2 |    33 |   -1.985 |      -26.5 |     20 | _1456_/D
+      180 |       1 |      81 |       24 |      2 |    33 |   -1.987 |      -25.7 |     20 | _1456_/D
+      190 |       1 |      90 |       26 |      2 |    33 |   -1.998 |      -23.2 |     20 | _1456_/D
+      192 |       1 |      92 |       26 |      2 |    33 |   -1.982 |      -22.9 |     20 | _1456_/D
+      194 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     20 | _1456_/D
+      196 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     20 | _1456_/D
+      197 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     19 | _1456_/D
+      198 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     18 | _1456_/D
+      199 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     17 | _1456_/D
+      200 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     17 | _1456_/D
+      200 |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     200* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     201* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     202* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     203* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     204* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     205* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     206* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     207* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     208* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     209* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     210* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     210* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     211* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     212* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     213* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     214* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     215* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+     216* |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+    final |       1 |      92 |       26 |      2 |    34 |   -1.981 |      -22.9 |     16 | _1456_/D
+---------------------------------------------------------------------------------------------------
+[INFO RSZ-0059] Removed 1 buffers.
+[INFO RSZ-0040] Inserted 15 buffers.
+[INFO RSZ-0041] Resized 92 instances.
+[INFO RSZ-0043] Swapped pins on 34 instances.
+[INFO RSZ-0049] Cloned 2 instances.
+[WARNING RSZ-0062] Unable to repair all setup violations.
+[INFO RSZ-0046] Found 51 endpoints with hold violations.
+Iteration | Resized | Buffers | Cloned Gates |   WNS   |   TNS   | Endpoint
+---------------------------------------------------------------------------
+        0 |       0 |       0 |            0 |   0.050 |   0.000 | _1393_/D
+    final |       0 |      51 |            0 |   0.102 |   0.000 | _1456_/D
+---------------------------------------------------------------------------
+[INFO RSZ-0032] Inserted 51 hold buffers.
+Placement Analysis
+---------------------------------
+total displacement        355.3 u
+average displacement        0.2 u
+max displacement            5.4 u
+original HPWL           18985.8 u
+legalized HPWL          19848.0 u
+delta HPWL                    5 %
+
+[INFO DPL-0020] Mirrored 356 instances
+[INFO DPL-0021] HPWL before           19848.0 u
+[INFO DPL-0022] HPWL after            19084.6 u
+[INFO DPL-0023] HPWL delta               -3.8 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               130     487.97
+  Tap cell                                469     586.81
+  Clock buffer                             10     238.98
+  Timing Repair Buffer                    183    1340.04
+  Inverter                                 12      45.04
+  Clock inverter                            5      63.81
+  Sequential cell                          81    1631.56
+  Multi-Input combinational cell          681    5372.65
+  Total                                  1571    9766.87
+Writing OpenROAD database to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/32-openroad-resizertimingpostcts/top.odb'…
+Writing netlist to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/32-openroad-resizertimingpostcts/top.nl.v'…
+Writing powered netlist to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/32-openroad-resizertimingpostcts/top.pnl.v'…
+Writing layout to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/32-openroad-resizertimingpostcts/top.def'…
+Writing timing constraints to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/32-openroad-resizertimingpostcts/top.sdc'…

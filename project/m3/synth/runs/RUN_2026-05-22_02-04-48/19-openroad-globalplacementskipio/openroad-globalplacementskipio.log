@@ -1,0 +1,99 @@
+Reading OpenROAD database at '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/16-openroad-generatepdn/top.odb'…
+Reading library file at '/home/roshan/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading design constraints file at '/nix/store/ss2cw3sxbrwwx9jl0rrppbw4kgcmgi2n-python3-3.11.9-env/lib/python3.11/site-packages/openlane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2
+[INFO] Setting input delay to: 2
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
++ global_placement -density 0.37189500000000003 -skip_io -pad_right 0 -pad_left 0 -init_wirelength_coef 0.25
+[INFO GPL-0002] DBU: 1000
+[INFO GPL-0003] SiteSize: (  0.460  2.720 ) um
+[INFO GPL-0004] CoreBBox: (  5.520 10.880 ) ( 194.120 187.680 ) um
+[INFO GPL-0006] NumInstances:              1373
+[INFO GPL-0007] NumPlaceInstances:          774
+[INFO GPL-0008] NumFixedInstances:          599
+[INFO GPL-0009] NumDummyInstances:            0
+[INFO GPL-0010] NumNets:                    818
+[INFO GPL-0011] NumPins:                   2926
+[INFO GPL-0012] DieBBox:  (  0.000  0.000 ) ( 200.000 200.000 ) um
+[INFO GPL-0013] CoreBBox: (  5.520 10.880 ) ( 194.120 187.680 ) um
+[INFO GPL-0016] CoreArea:             33344.480 um^2
+[INFO GPL-0017] NonPlaceInstsArea:     1074.781 um^2
+[INFO GPL-0018] PlaceInstsArea:        8479.382 um^2
+[INFO GPL-0019] Util:                    26.277 %
+[INFO GPL-0020] StdInstsArea:          8479.382 um^2
+[INFO GPL-0021] MacroInstsArea:           0.000 um^2
+[INFO GPL-0031] FillerInit:NumGCells:      1103
+[INFO GPL-0032] FillerInit:NumGNets:        818
+[INFO GPL-0033] FillerInit:NumGPins:       2926
+[INFO GPL-0023] TargetDensity:            0.372
+[INFO GPL-0024] AvrgPlaceInstArea:       10.955 um^2
+[INFO GPL-0025] IdealBinArea:            29.458 um^2
+[INFO GPL-0026] IdealBinCnt:               1131
+[INFO GPL-0027] TotalBinArea:         33344.480 um^2
+[INFO GPL-0028] BinCnt:        32     32
+[INFO GPL-0029] BinSize: (  5.894  5.525 )
+[INFO GPL-0030] NumBins: 1024
+[NesterovSolve] Iter:    1 overflow: 0.994 HPWL: 2176850
+[NesterovSolve] Iter:   10 overflow: 0.989 HPWL: 1585670
+[NesterovSolve] Iter:   20 overflow: 0.988 HPWL: 1566495
+[NesterovSolve] Iter:   30 overflow: 0.988 HPWL: 1564767
+[NesterovSolve] Iter:   40 overflow: 0.988 HPWL: 1564302
+[NesterovSolve] Iter:   50 overflow: 0.988 HPWL: 1563438
+[NesterovSolve] Iter:   60 overflow: 0.988 HPWL: 1563568
+[NesterovSolve] Iter:   70 overflow: 0.988 HPWL: 1563579
+[NesterovSolve] Iter:   80 overflow: 0.988 HPWL: 1563642
+[NesterovSolve] Iter:   90 overflow: 0.988 HPWL: 1565425
+[NesterovSolve] Iter:  100 overflow: 0.988 HPWL: 1569129
+[NesterovSolve] Iter:  110 overflow: 0.988 HPWL: 1578713
+[NesterovSolve] Iter:  120 overflow: 0.988 HPWL: 1611448
+[NesterovSolve] Iter:  130 overflow: 0.977 HPWL: 1742178
+[NesterovSolve] Iter:  140 overflow: 0.973 HPWL: 2047526
+[NesterovSolve] Iter:  150 overflow: 0.962 HPWL: 2466758
+[NesterovSolve] Iter:  160 overflow: 0.946 HPWL: 2977521
+[NesterovSolve] Iter:  170 overflow: 0.927 HPWL: 3428151
+[NesterovSolve] Iter:  180 overflow: 0.906 HPWL: 3818254
+[NesterovSolve] Iter:  190 overflow: 0.880 HPWL: 4355109
+[NesterovSolve] Iter:  200 overflow: 0.849 HPWL: 4964729
+[NesterovSolve] Iter:  210 overflow: 0.813 HPWL: 5590769
+[NesterovSolve] Iter:  220 overflow: 0.777 HPWL: 6202243
+[NesterovSolve] Iter:  230 overflow: 0.735 HPWL: 6828872
+[NesterovSolve] Iter:  240 overflow: 0.693 HPWL: 7375774
+[NesterovSolve] Iter:  250 overflow: 0.646 HPWL: 8025936
+[NesterovSolve] Iter:  260 overflow: 0.607 HPWL: 8548625
+[NesterovSolve] Iter:  270 overflow: 0.552 HPWL: 9143357
+[NesterovSolve] Iter:  280 overflow: 0.505 HPWL: 9637589
+[NesterovSolve] Iter:  290 overflow: 0.448 HPWL: 9968463
+[NesterovSolve] Iter:  300 overflow: 0.395 HPWL: 10195948
+[NesterovSolve] Iter:  310 overflow: 0.352 HPWL: 10511965
+[NesterovSolve] Iter:  320 overflow: 0.323 HPWL: 10650445
+[NesterovSolve] Iter:  330 overflow: 0.296 HPWL: 10846124
+[NesterovSolve] Iter:  340 overflow: 0.270 HPWL: 10986927
+[NesterovSolve] Iter:  350 overflow: 0.243 HPWL: 11105460
+[NesterovSolve] Iter:  360 overflow: 0.218 HPWL: 11211839
+[NesterovSolve] Iter:  370 overflow: 0.194 HPWL: 11283161
+[NesterovSolve] Iter:  380 overflow: 0.174 HPWL: 11376856
+[NesterovSolve] Iter:  390 overflow: 0.153 HPWL: 11485449
+[NesterovSolve] Iter:  400 overflow: 0.133 HPWL: 11602757
+[NesterovSolve] Iter:  410 overflow: 0.118 HPWL: 11709480
+[NesterovSolve] Iter:  420 overflow: 0.103 HPWL: 11803830
+[NesterovSolve] Finished with Overflow: 0.099925
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               130     487.97
+  Tap cell                                469     586.81
+  Inverter                                 12      45.04
+  Sequential cell                          81    1722.90
+  Multi-Input combinational cell          681    6711.44
+  Total                                  1373    9554.16
+Writing OpenROAD database to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/19-openroad-globalplacementskipio/top.odb'…
+Writing netlist to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/19-openroad-globalplacementskipio/top.nl.v'…
+Writing powered netlist to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/19-openroad-globalplacementskipio/top.pnl.v'…
+Writing layout to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/19-openroad-globalplacementskipio/top.def'…
+Writing timing constraints to '/home/roshan/hw4ai-codefest/project/m3/synth/runs/RUN_2026-05-22_02-04-48/19-openroad-globalplacementskipio/top.sdc'…

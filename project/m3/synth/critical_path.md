@@ -1,9 +1,19 @@
-# Critical Path Identification
+# Critical Path and Timing Violation Discussion
 
-The worst reported setup path starts at register `_1425_` and ends at register `_1456_`, both clocked by `clk`. The reported slack for this path is `3.682910 ns`, so the design meets the 10 ns clock constraint for this path.
+The final OpenLane post-PnR timing results show that the design completes the flow, but does not fully close timing across all corners at the 10 ns clock period. The nominal TT corner reports no setup violation, but the slow-slow corners show negative setup slack.
 
-This path is part of the synthesized integrated `top` design, which connects the memory-mapped `interface_ctrl` module to the INT8 MAC `compute_core`. Based on the RTL structure, the most timing-critical logic is expected to be around the compute datapath, where the signed INT8 operands are multiplied, sign-extended, and accumulated into the 32-bit output register. This is more complex than the interface address decoding logic, because the interface mostly contains simple register writes, register reads, and address-based muxing.
+The worst reported setup result is in the `max_ss_100C_1v60` corner:
 
-The critical path is important because the dominant kernel in this project is MAC/GEMM-style computation. The path reflects the hardware cost of moving from input operand registers through combinational compute logic into the output accumulation register. To improve timing in the next milestone, the multiply and accumulate operation can be split into pipeline stages. For example, the product can be registered first, and the accumulator update can happen in the following cycle. This would reduce the combinational delay per cycle and allow a shorter clock period, at the cost of one extra cycle of latency.
+- WNS: -2.624074 ns
+- TNS: -32.354795 ns
 
-Additional detail: In the synthesized timing report, the path is represented using mapped SKY130 standard cells rather than RTL signal names. The intermediate logic corresponds to the MAC datapath structure: operand/control register output, combinational multiply-related logic, sign-extension logic, adder/carry-chain logic, and the destination accumulator/output register. For M4, this path should be reviewed again after any pipelining or datapath scaling changes.
+The `nom_ss_100C_1v60` corner also shows setup violations:
+
+- WNS: -2.495084 ns
+- TNS: -30.413632 ns
+
+A representative nominal timing path starts at register `_1425_` and ends at register `_1456_`, both clocked by `clk`. However, the true M3 timing concern is the violated slow-corner setup behavior, not the passing nominal path alone.
+
+Based on the RTL structure, the most likely timing-critical logic is in the MAC datapath. The path corresponds to operand/control register outputs feeding multiply-related combinational logic, sign-extension logic, adder/carry-chain logic, and finally the destination accumulator/output register. This is more complex than the interface controller path, which mainly contains address decode, muxing, and register read/write logic.
+
+The timing issue is expected because the current compute core performs multiplication and accumulation in the same cycle. In slow process corners, the delay of the multiply-plus-add datapath becomes too large for the 10 ns target period. To shorten the critical path in M4, the MAC operation should be pipelined. A practical improvement is to register the multiplication result first and perform the accumulator update in the next cycle. This would split the long combinational path into two shorter paths and improve setup timing, at the cost of one extra cycle of latency.

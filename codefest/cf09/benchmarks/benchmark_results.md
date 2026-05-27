@@ -1,0 +1,6 @@
+- Software median runtime: 1931.06 us
+- Software throughput: 4.2422 MFLOP/s = 0.004242 GOPS
+- Peak RSS: 9.8438 MB
+- Hardware projected frequency: 79.2 MHz
+- Hardware throughput: 0.1584 GOPS
+- Speedup: 37.3x

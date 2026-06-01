@@ -1,7 +1,20 @@
 # CF09 Roofline Analysis
 
-The software baseline achieves 0.004242 GOPS with an arithmetic intensity of approximately 10.67 ops/byte. This point lands far below the roofline, showing that the Python/software GEMM baseline is not reaching the available compute roof. The main reason is software overhead, scalar execution, and loop/control overhead rather than the arithmetic intensity itself.
+The sky130 HD platform ceiling (tt_025C_1v80 nominal) is 0.4 GOPS peak compute
+and 0.8 GB/s peak memory bandwidth, giving a ridge point of 0.5 FLOP/byte. The
+projected accelerator at 0.1584 GOPS sits 60% below the platform compute ceiling —
+not at it. This gap exists because timing did not close (WNS = −2.624 ns), leaving
+the design running at a corrected 79.2 MHz instead of the sky130 nominal 200 MHz.
 
-The CLLM accelerator point is labelled as projected. The original 10 ns clock target did not close across all corners, with worst setup slack of -2.624 ns. Therefore, a conservative corrected clock period of 12.624 ns was used, giving about 79.2 MHz. Since the current `compute_core.sv` performs one INT8 MAC per valid cycle, the projected throughput is 79.2M x 2 = 158.4 MOPS, or 0.1584 GOPS.
+The dominant uncertainty in the projection is timing closure itself. The 79.2 MHz
+figure is derived from a single worst-case slack number, not from a re-run STA at
+the corrected period — fixing one path may expose another violation. Additionally,
+the projection assumes 100% MAC utilization with no interface stalls, which will
+not hold in practice since the host must write operands register-by-register before
+each MAC.
 
-The accelerator lands close to the projected compute roof because the roofline itself is based on the same one-MAC-per-cycle projected hardware limit. The gap between the accelerator and an ideal stronger accelerator is mainly architectural: this design has only one MAC lane, no array-level parallelism, and no measured memory system. To convert this projection into a measured result, the next step is to close timing, add cycle counters, and run either cycle-accurate simulation or FPGA execution with measured stalls and bandwidth.
+To convert this to a measurement: pipeline the MAC datapath in compute_core.sv to
+close timing at 10 ns across all corners, re-run OpenLane STA to confirm, add
+32-bit cycle and MAC counters to the top-level wrapper (exposed at addresses 0x10
+and 0x14), then run the full M3 GEMM testbench with cocotb and report measured
+cycles, utilization, and throughput instead of projected values.

@@ -38,7 +38,7 @@ The design does not implement a systolic array, local SRAM tile buffer, or multi
 The main RTL modules are:
 
 - `top.sv`: top-level integration
-- `interface_ctrl.sv`: memory-mapped interface
+- `interface_ctrl.sv` (`interface.sv` in the M4 checklist path): memory-mapped interface
 - `compute_core.sv`: signed INT8 MAC datapath
 
 ## 5. Hardware Interface

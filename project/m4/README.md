@@ -9,6 +9,7 @@ This folder contains the final Milestone 4 deliverables for the HW4AI project. T
 | rtl/top.sv | Final top-level integration module | Source code |
 | rtl/compute_core.sv | Signed INT8 MAC compute datapath | Source code, architecture |
 | rtl/interface_ctrl.sv | Memory-mapped control/status interface | Source code, interface |
+| rtl/interface.sv | Same memory-mapped interface source copied with checklist-required filename | Source code, interface |
 | tb/tb_top.sv | Final self-contained top-level testbench | Verification |
 | sim/final_run.log | Final simulation log showing PASS | Verification |
 | sim/final_waveform.png | Final annotated end-to-end waveform | Verification |

@@ -1,4 +1,4 @@
-# M3 Multi-Corner Timing Report
+# M4 Multi-Corner Timing Report
 
 OpenLane run:
 runs/RUN_2026-05-22_01-11-33
@@ -36,4 +36,4 @@ runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/max_ss_100C_1v60/tns.max.rpt
 
 ## Representative Nominal Timing Path
 
-A representative passing nominal-corner timing path from the earlier STA report starts at register _1425_ and ends at register _1456_, both clocked by clk. The nominal-corner slack for that path was approximately +3.682910 ns. However, the final multi-corner summary above is the authoritative timing result for M3.
+A representative passing nominal-corner timing path from the earlier STA report starts at register _1425_ and ends at register _1456_, both clocked by clk. The nominal-corner slack for that path was approximately +3.682910 ns. However, the final multi-corner summary above is the authoritative timing result for M4.

@@ -15,7 +15,7 @@ The submitted hardware is not a full systolic array or full tiled GEMM engine. I
 
 ## 2. Roofline Analysis
 
-The target kernel has moderate arithmetic intensity because each MAC performs useful arithmetic while consuming compact INT8 operands. In the M4 model, one MAC is counted as two operations: one multiply and one accumulate.
+The target kernel has arithmetic intensity of 1.0 FLOP/byte because each MAC performs 2 FLOP and consumes 2 bytes of input data, one INT8 byte from operand A and one INT8 byte from operand B. Relative to a typical memory-bandwidth roofline, this is a low-to-moderate intensity point, so the complete system can become memory- or interface-bound unless operands are reused locally. In the M4 model, one MAC is counted as two operations: one multiply and one accumulate.
 
 The final roofline plot is shown in Figure 1 and committed as `project/m4/bench/roofline_final.png`. The software baseline point uses the measured Python tiled GEMM throughput of 0.004242 GOPS. The M4 accelerator point uses the timing-derived throughput of 0.1584 GOPS.
 
@@ -45,13 +45,13 @@ The main RTL modules are:
 
 ## 5. Hardware Interface
 
-The hardware interface is a lightweight memory-mapped interface. It includes host request valid, ready, write enable, address, write data, and read data signals. The interface writes operands and control registers and returns the accumulated result.
+The hardware interface is a lightweight memory-mapped interface. It includes host request valid, ready, write enable, address, write data, and read data signals. The interface writes operands and control registers and returns the accumulated result. At the corrected 79.2 MHz clock, each MAC requires three 2-cycle host writes and one 2-cycle read, for 8 cycles total per MAC. This gives an effective interface-limited throughput of 79.2 MHz / 8 = 9.9 million MAC/s, or 19.8 MFLOP/s = 0.0198 GOPS. The operand write bandwidth is 3 writes * 4 bytes * 9.9 million MAC/s = 118.8 MB/s. This is much lower than the zero-stall compute estimate of 0.1584 GOPS, showing that the register interface would limit end-to-end throughput.
 
 This interface is simple and easy to verify, but it is not optimized for sustained GEMM throughput. Since operands are written through registers, the complete system can become interface-bound if every MAC requires separate host transactions. A streaming interface, DMA engine, or local tile buffer would be needed to approach sustained GEMM throughput.
 
 ## 6. Verification
 
-The final testbench is committed as `project/m4/tb/tb_top.sv`. The final simulation log is committed as `project/m4/sim/final_run.log`. The log reports:
+The final testbench is committed as `project/m4/tb/tb_top.sv`. The final simulation log is committed as `project/m4/sim/final_run.log`. Earlier unit-level verification used `project/m2/tb/tb_compute_core.sv` for the INT8 MAC datapath and `project/m2/tb/tb_interface.sv` for the memory-mapped interface behavior. Integrated top-level verification was first exercised in M3 using `project/m3/tb/tb_top.sv`, and the M4 testbench carries that integrated host-interface-compute-host structure into the final submission. The log reports:
 
 PASS: Full 16x16 GEMM-style host-interface-compute-host test passed
 
@@ -68,12 +68,16 @@ The area report shows:
 - Number of cells: 774
 - Chip area for module `top`: 8479.382400 um^2
 
+The dominant area contributor is combinational logic, with 693 combinational cells compared with 81 DFFs; sequential elements account for 20.32% of area.
+
 The power report shows:
 
 - Internal power: 5.559857e-04 W
 - Switching power: 1.590537e-04 W
 - Leakage power: 4.945864e-09 W
 - Total power: 7.150443e-04 W, or 0.715 mW
+
+The dominant power contributor is sequential logic at 46.5%, followed closely by clock power at 45.0%, while combinational logic contributes 8.6%.
 
 The timing report shows that the design completed the OpenLane flow but did not fully meet timing at the requested 10 ns clock across all corners. The worst reported setup slack is -2.624074 ns at the max_ss_100C_1v60 corner, with TNS = -32.354795 ns. The nominal TT corner did not show negative setup slack, but the slow corners did.
 

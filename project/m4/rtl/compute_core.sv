@@ -2,7 +2,7 @@
  * Module: compute_core
  *
  * Purpose:
- *   Simple INT8 multiply-accumulate compute core for the HW4AI M2 project.
+ *   Simple INT8 multiply-accumulate compute core for the HW4AI M4 project.
  *   This represents the dominant GEMM/MAC operation from the project.
  *
  * Ports:

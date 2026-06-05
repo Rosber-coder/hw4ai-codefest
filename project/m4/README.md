@@ -24,6 +24,5 @@ This folder contains the final Milestone 4 deliverables for the HW4AI project. T
 | report/design_justification.pdf | Final 9-section design justification report | Report |
 | report/figures/ | Figures referenced by the design report | Report figures |
 
-| bench/roofline_final.png | Final roofline plot | Benchmark, report |
 | report/design_justification.md | Markdown source for final report | Report |
 | report/figures/roofline_final.png | Roofline figure referenced by report | Report figures |

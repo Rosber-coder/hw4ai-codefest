@@ -2,7 +2,7 @@
  * Module: top
  *
  * Purpose:
- *   M3 integrated top module connecting the memory-mapped interface
+ *   M4 integrated top module connecting the memory-mapped interface
  *   to the INT8 MAC compute core.
  *
  * Ports:

@@ -1,31 +1,29 @@
-# hw4ai-codefest
+# HW4AI Project – INT8 MAC Accelerator
 
-Roshan Bernard Premarajan  
-ECE 410/510 Spring 2026  
-Tentative project topic: INT8 tiled matrix multiplication accelerator chiplet
+Roshan Bernard Premarajan
+ECE 410/510 – Hardware for Artificial Intelligence and Machine Learning
+Spring 2026
 
+This repository contains the complete Milestone 4 submission for a memory-mapped signed INT8 MAC accelerator. The accelerator implements the core multiply-accumulate operation used in tiled GEMM workloads, using signed 8-bit operands and a signed 32-bit accumulator. The design was verified through simulation, synthesized using OpenLane 2, and benchmarked against a software baseline.
 
-## COPT Project Compute Core
+## Milestone 4 Deliverables
 
-For COPT Part B, I implemented a parameterized INT8 GEMM/MAC compute core in `project/hdl/int8_gemm_core.sv`.
+The complete Milestone 4 submission can be found in:
 
-The module accepts signed INT8 operands `a_in` and `b_in`, multiplies them, sign-extends the product into a 32-bit accumulator, and updates `acc_out` only when `valid_in` is asserted. The design includes a synchronous reset and a `valid_out` signal to indicate a valid accumulated output.
+- project/m4/README.md – Catalog of all M4 deliverables
+- project/m4/report/design_justification.pdf – Final design justification report
+- project/m4/rtl/ – Final RTL source code
+- project/m4/tb/ – Verification testbench
+- project/m4/sim/ – Simulation results and waveform
+- project/m4/synth/ – Synthesis reports
+- project/m4/bench/ – Benchmark results and roofline analysis
 
-The cocotb testbench in `project/hdl/test_int8_gemm_core.py` verifies:
-- reset behavior
-- signed INT8 multiplication
-- 32-bit accumulation
-- valid-based gating
-- hold behavior when `valid_in` is low
+## Design Overview
 
-The simulation passed using Icarus Verilog and cocotb.
+The submitted hardware consists of three primary modules:
 
-### Interface Choice
+- compute_core.sv – Signed INT8 multiply-accumulate datapath
+- interface_ctrl.sv – Memory-mapped control and status interface
+- top.sv – Top-level integration module
 
-The current compute core uses a simple streaming valid-based interface. This is a good first step because the core can accept one MAC-style operation per valid cycle and can later be extended toward AXI-stream or a lightweight memory-mapped interface.
-
-Based on the M1/CF02 roofline analysis, the INT8 tiled GEMM kernel has moderate arithmetic intensity. A streaming interface helps keep operands moving efficiently while allowing reuse inside the compute core, which is important for improving accelerator utilization.
-
-### Precision Choice
-
-I selected INT8 precision because the project targets ML inference-style GEMM. INT8 reduces memory bandwidth and storage requirements compared with FP32 while keeping the hardware smaller and more efficient. The design uses INT8 operands with 32-bit accumulation, which is a common approach for quantized neural network inference.
+All benchmark, synthesis, and report results correspond to this final submitted hardware implementation.

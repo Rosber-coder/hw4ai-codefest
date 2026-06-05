@@ -1,0 +1,12 @@
+metric,software_baseline,m4_accelerator,units,source,notes
+result_type,measured,STA_and_cycle_model,classification,codefest/cf09/benchmarks/benchmark_results.md,M4 accelerator is not FPGA-measured
+execution_time,1931.06,,us,project/benchmark_gemm.py and cf09 benchmark_results.md,Software baseline median runtime for 16x16x16 tiled GEMM
+flops_per_run,8192,8192,FLOP,project/benchmark_gemm.py,2*N*K*M with N=K=M=16
+software_throughput,0.004242,,GOPS,codefest/cf09/benchmarks/benchmark_results.md,Measured Python tiled GEMM throughput
+corrected_clock_period,,12.624,ns,project/m4/synth/timing_report.txt,10 ns target plus 2.624 ns negative slack
+corrected_clock_frequency,,79.2,MHz,codefest/cf09/benchmarks/benchmark_results.md,Derived from corrected 12.624 ns period
+useful_work_per_cycle,,2,FLOP/cycle,RTL model,One INT8 MAC per cycle equals multiply plus accumulate
+accelerator_throughput,,0.1584,GOPS,codefest/cf09/benchmarks/benchmark_results.md,79.2 MHz times 2 FLOP/cycle
+speedup_vs_software,,37.3,x,codefest/cf09/benchmarks/benchmark_results.md,0.1584 GOPS divided by 0.004242 GOPS
+peak_rss,9.8438,,MB,codefest/cf09/benchmarks/benchmark_results.md,Software peak memory usage
+estimated_power,,0.715,mW,project/m4/synth/power_report.txt,OpenLane power estimate

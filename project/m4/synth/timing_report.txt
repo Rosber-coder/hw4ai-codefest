@@ -1,0 +1,39 @@
+# M3 Multi-Corner Timing Report
+
+OpenLane run:
+runs/RUN_2026-05-22_01-11-33
+
+Clock:
+clk = 10 ns
+
+## Post-PnR Setup Summary
+
+| Corner | WNS Setup (ns) | TNS Setup (ns) | Status |
+|---|---:|---:|---|
+| nom_tt_025C_1v80 | 0.000000 | 0.000000 | MET |
+| nom_ss_100C_1v60 | -2.495084 | -30.413632 | VIOLATED |
+| max_ss_100C_1v60 | -2.624074 | -32.354795 | VIOLATED |
+
+## Interpretation
+
+The design completes the OpenLane flow, but it does not fully meet timing across all corners at the requested 10 ns clock period. The nominal TT corner reports no negative setup slack, but the slow-slow corners show setup violations. The worst reported setup slack is from the max_ss_100C_1v60 corner with WNS = -2.624074 ns and TNS = -32.354795 ns.
+
+This means the design would need either a longer clock period or datapath optimization to close timing across all analyzed corners. The most likely optimization for M4 is pipelining the MAC datapath by separating multiply and accumulate across cycles.
+
+## Source Report Files
+
+nom_tt setup:
+runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/nom_tt_025C_1v80/wns.max.rpt
+runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/nom_tt_025C_1v80/tns.max.rpt
+
+nom_ss setup:
+runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/nom_ss_100C_1v60/wns.max.rpt
+runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/nom_ss_100C_1v60/tns.max.rpt
+
+max_ss setup:
+runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/max_ss_100C_1v60/wns.max.rpt
+runs/RUN_2026-05-22_01-11-33/50-openroad-stapostpnr/max_ss_100C_1v60/tns.max.rpt
+
+## Representative Nominal Timing Path
+
+A representative passing nominal-corner timing path from the earlier STA report starts at register _1425_ and ends at register _1456_, both clocked by clk. The nominal-corner slack for that path was approximately +3.682910 ns. However, the final multi-corner summary above is the authoritative timing result for M3.

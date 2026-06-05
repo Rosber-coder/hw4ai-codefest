@@ -1,3 +1,3 @@
-VCD info: dumpfile project/m3/sim/cosim_waveform.vcd opened for output.
+VCD info: dumpfile sim/final_waveform.vcd opened for output.
 PASS: Full 16x16 GEMM-style host-interface-compute-host test passed
 Checked 256 output elements with 16 MACs each = 4096 MAC operations

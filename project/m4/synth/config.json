@@ -1,13 +1,13 @@
 {
-  "DESIGN_NAME": "top",
-  "VERILOG_FILES": [
-    "dir::../rtl/top.sv",
-    "dir::../../m2/rtl/compute_core.sv",
-    "dir::../../m2/rtl/interface_ctrl.sv"
-  ],
-  "CLOCK_PORT": "clk",
-  "CLOCK_PERIOD": 10,
-  "FP_SIZING": "absolute",
-  "DIE_AREA": "0 0 200 200",
-  "RUN_LINTER": false
+    "DESIGN_NAME": "top",
+    "VERILOG_FILES": [
+        "dir::../rtl/top.sv",
+        "dir::../rtl/compute_core.sv",
+        "dir::../rtl/interface_ctrl.sv"
+    ],
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10,
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 200 200",
+    "RUN_LINTER": false
 }

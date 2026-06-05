@@ -29,6 +29,8 @@ The design uses signed INT8 operands and a signed 32-bit accumulator. INT8 was s
 
 The RTL implements signed multiplication using two 8-bit signed inputs. The 16-bit product is sign-extended into the 32-bit accumulator. This preserves signed behavior for positive and negative test values.
 
+The precision choice and quantization error analysis were documented in the M2 milestone precision report at `project/m2/precision.md`. That analysis compared INT8 behavior against a higher-precision reference and supports the use of signed INT8 operands with 32-bit accumulation for this workload.
+
 ## 4. Dataflow and Architecture
 
 The final architecture is a simple host-driven MAC dataflow. The host writes operands and control information through the memory-mapped interface. The interface drives the compute core inputs. When the valid signal is asserted, the compute core multiplies the signed INT8 operands and accumulates the result into a signed 32-bit output register.

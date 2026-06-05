@@ -98,6 +98,13 @@ CSR format stores:
 
 ### Total Sparse Memory
 
+Summing all three arrays:
+
+4(1 − s)N² + 4(1 − s)N² + 4(N + 1)  
+= 8N²(1 − s) + 4(N + 1)
+
+Substituting N = 512:
+
 1,048,576(1 − s)  
 + 1,048,576(1 − s)  
 + 2,052
@@ -106,7 +113,7 @@ CSR format stores:
 
 Answer:
 
-Sparse memory = 2,097,152(1 − s) + 2,052 bytes
+Sparse memory = 8N²(1 − s) + 4(N + 1) = 2,097,152(1 − s) + 2,052 bytes
 
 ---
 
@@ -180,6 +187,17 @@ Given:
 
 s = 0.9  
 Bandwidth = 320 GB/s
+
+### Memory-Bound Roofline Rationale
+
+In a memory-bandwidth-limited system, execution time is determined solely by
+the number of bytes transferred divided by the available bandwidth — compute
+is not the bottleneck. This is the roofline memory-bound regime: the system
+cannot issue MACs faster than the memory subsystem can supply operands.
+Therefore, end-to-end speedup equals the ratio of bytes transferred in the
+dense case to bytes transferred in the sparse case:
+
+Speedup = Dense memory bytes / Sparse memory bytes = Dense time / Sparse time
 
 ### Dense Memory
 

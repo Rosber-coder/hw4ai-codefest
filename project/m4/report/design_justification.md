@@ -87,26 +87,29 @@ The most likely timing fix is to pipeline the MAC datapath by separating multipl
 
 The software baseline is the measured Python tiled GEMM benchmark. The median runtime is 1931.06 us for 8192 FLOP, giving 0.004242 GOPS.
 
-The M4 accelerator throughput is derived from the corrected timing period and RTL cycle model:
+The compute core itself can theoretically sustain 0.1584 GOPS when one useful MAC is completed every cycle at the corrected 79.2 MHz frequency. This corresponds to a theoretical peak speedup of 37.3x relative to the software baseline.
 
-Corrected period = 10 ns + 2.624 ns = 12.624 ns  
-Corrected frequency = 79.2 MHz  
-Useful work per cycle = 2 FLOP/cycle  
-Accelerator throughput = 0.1584 GOPS  
+However, the submitted hardware uses a memory-mapped register interface. Accounting for interface overhead, each MAC requires three host write transactions and one read transaction, for a total of eight clock cycles per completed MAC. This reduces the effective end-to-end throughput to approximately 0.0198 GOPS.
 
-The resulting speedup is:
+Using the interface-limited throughput, the realistic accelerator speedup is:
 
-Speedup = 0.1584 GOPS / 0.004242 GOPS = 37.3x
+Speedup = 0.0198 GOPS / 0.004242 GOPS = 4.7x
 
-Equivalently, the accelerator time for 8192 FLOP is 51.72 us, and:
+Therefore, 4.7x is the most representative end-to-end speedup for the submitted design, while 37.3x should be interpreted as a best-case compute-core throughput estimate assuming zero interface stalls.
 
-Speedup = 1931.06 us / 51.72 us = 37.3x
+The OpenLane power report estimates total power as 0.715 mW. Using the interface-limited execution time:
 
-The accelerator energy estimate uses the synthesis power estimate:
+Interface-limited runtime = 8192 FLOP / 19.8e6 FLOP/s = 413.7 us
 
-Energy = 0.715 mW * 51.72 us = 0.03698 uJ
+Interface-limited accelerator energy = 0.715 mW * 413.7 us = 0.296 uJ, approximately 0.30 uJ
 
-This is not measured silicon or FPGA energy. No measured software energy number is available.
+Using the compute-only peak throughput model:
+
+Compute-core runtime = 8192 FLOP / 158.4e6 FLOP/s = 51.72 us
+
+Compute-core lower-bound energy estimate = 0.715 mW * 51.72 us = 0.03698 uJ, approximately 0.037 uJ
+
+These energy values are synthesis-based accelerator estimates derived from OpenLane power and timing models. No measured software energy data is available, so this work reports accelerator energy estimates only and does not claim a software-versus-hardware energy comparison.
 
 ## 9. What Did Not Work
 

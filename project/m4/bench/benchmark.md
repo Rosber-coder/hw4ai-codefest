@@ -36,23 +36,33 @@ Accelerator throughput = 79.2 MHz * 2 FLOP/cycle = 158.4 MFLOP/s = 0.1584 GOPS
 
 ## Speedup
 
-Speedup = accelerator throughput / software throughput
+The realistic end-to-end accelerator throughput is interface-limited because each MAC requires three host write transactions and one read transaction. With 8 cycles per MAC at 79.2 MHz, the effective throughput is:
 
-Speedup = 0.1584 GOPS / 0.004242 GOPS = 37.3x
+Effective MAC rate = 79.2 MHz / 8 = 9.9 million MAC/s
 
-Equivalent accelerator time for 8192 FLOP:
+Effective throughput = 9.9 million MAC/s * 2 FLOP/MAC = 19.8 MFLOP/s = 0.0198 GOPS
 
-Accelerator time = 8192 FLOP / 158.4e6 FLOP/s = 51.72 us
+Realistic speedup = 0.0198 GOPS / 0.004242 GOPS = 4.7x
 
-Speedup = 1931.06 us / 51.72 us = 37.3x
+For completeness, the compute core itself can theoretically sustain 0.1584 GOPS assuming one useful MAC every cycle and no interface stalls. This corresponds to a best-case compute-core speedup of 37.3x.
 
 ## Power and energy estimate
 
 The OpenLane power report estimates total power as 0.715 mW.
 
-Accelerator energy = 0.715 mW * 51.72 us = 0.03698 uJ
+Using the interface-limited runtime:
 
-This is a synthesis-based estimate, not measured silicon or FPGA energy. No measured software energy number is available, so the energy comparison is reported only for the accelerator.
+Interface-limited runtime = 8192 FLOP / 19.8e6 FLOP/s = 413.7 us
+
+Interface-limited accelerator energy = 0.715 mW * 413.7 us = 0.296 uJ, approximately 0.30 uJ
+
+Using the compute-core peak model:
+
+Compute-core runtime = 8192 FLOP / 158.4e6 FLOP/s = 51.72 us
+
+Compute-core lower-bound energy = 0.715 mW * 51.72 us = 0.03698 uJ, approximately 0.037 uJ
+
+These are synthesis-based accelerator energy estimates, not measured silicon or FPGA energy numbers. No measured software energy number is available, so this benchmark reports accelerator energy estimates only and does not claim a software-versus-hardware energy comparison.
 
 ## Caveats
 

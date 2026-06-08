@@ -6,7 +6,14 @@ software_throughput,0.004242,,GOPS,codefest/cf09/benchmarks/benchmark_results.md
 corrected_clock_period,,12.624,ns,project/m4/synth/timing_report.txt,10 ns target plus 2.624 ns negative slack
 corrected_clock_frequency,,79.2,MHz,codefest/cf09/benchmarks/benchmark_results.md,Derived from corrected 12.624 ns period
 useful_work_per_cycle,,2,FLOP/cycle,RTL model,One INT8 MAC per cycle equals multiply plus accumulate
-accelerator_throughput,,0.1584,GOPS,codefest/cf09/benchmarks/benchmark_results.md,79.2 MHz times 2 FLOP/cycle
-speedup_vs_software,,37.3,x,codefest/cf09/benchmarks/benchmark_results.md,0.1584 GOPS divided by 0.004242 GOPS
+compute_core_peak_throughput,,0.1584,GOPS,codefest/cf09/benchmarks/benchmark_results.md,79.2 MHz times 2 FLOP/cycle with zero interface stalls
+interface_cycles_per_mac,,8,cycles,project/m4/report/design_justification.md,Three 2-cycle writes plus one 2-cycle read
+interface_limited_mac_rate,,9.9,MMAC/s,project/m4/report/design_justification.md,79.2 MHz divided by 8 cycles per MAC
+interface_limited_throughput,,0.0198,GOPS,project/m4/report/design_justification.md,9.9 MMAC/s times 2 FLOP/MAC
+speedup_vs_software_realistic,,4.7,x,project/m4/bench/benchmark.md,0.0198 GOPS divided by 0.004242 GOPS
+speedup_vs_software_peak,,37.3,x,project/m4/bench/benchmark.md,0.1584 GOPS divided by 0.004242 GOPS with zero interface stalls
 peak_rss,9.8438,,MB,codefest/cf09/benchmarks/benchmark_results.md,Software peak memory usage
 estimated_power,,0.715,mW,project/m4/synth/power_report.txt,OpenLane power estimate
+interface_limited_energy,,0.30,uJ,project/m4/bench/benchmark.md,0.715 mW times 413.7 us
+compute_core_lower_bound_energy,,0.037,uJ,project/m4/bench/benchmark.md,0.715 mW times 51.72 us
+software_energy,,not_available,uJ,project/m4/bench/benchmark.md,No measured software energy number is available

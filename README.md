@@ -1,5 +1,7 @@
 # HW4AI Project – INT8 MAC Accelerator
 
+Final graded M4 submission tag: `m4-submission`.
+
 Roshan Bernard Premarajan
 ECE 410/510 – Hardware for Artificial Intelligence and Machine Learning
 Spring 2026

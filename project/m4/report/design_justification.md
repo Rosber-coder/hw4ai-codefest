@@ -127,9 +127,9 @@ Figure 1: Final roofline plot, committed at `project/m4/report/figures/roofline_
 
 Figure 2: Final waveform image, committed at `project/m4/report/figures/final_waveform.png`.
 
-Figure 3: Block diagram, committed at `project/m4/report/figures/block_diagram.txt`.
+Figure 3: Block diagram, committed at `project/m4/report/figures/block_diagram.png`.
 
-Figure 4: Dataflow diagram, committed at `project/m4/report/figures/dataflow_diagram.txt`.
+Figure 4: Dataflow diagram, committed at `project/m4/report/figures/dataflow_diagram.png`.
 
 ## Additional Implementation Details
 

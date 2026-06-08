@@ -1,0 +1,14 @@
+digraph G {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontsize=12];
+
+  a [label="1. Host writes Operand A"];
+  b [label="2. Host writes Operand B"];
+  start [label="3. Host writes Start/Control"];
+  valid [label="4. Interface asserts core_valid"];
+  mac [label="5. INT8 multiply\nA × B"];
+  acc [label="6. Sign-extend and accumulate\n32-bit result"];
+  read [label="7. Host reads result"];
+
+  a -> b -> start -> valid -> mac -> acc -> read;
+}

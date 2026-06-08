@@ -71,7 +71,7 @@ module tb_top;
     endtask
 
     initial begin
-        $dumpfile("project/m3/sim/cosim_waveform.vcd");
+        $dumpfile("sim/final_waveform.vcd");
         $dumpvars(0, tb_top);
 
         clk = 0;

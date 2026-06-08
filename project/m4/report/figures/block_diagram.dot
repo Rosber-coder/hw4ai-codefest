@@ -1,0 +1,14 @@
+digraph G {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontsize=12];
+
+  host [label="Host / Testbench"];
+  iface [label="interface.sv\nMemory-mapped control\nA, B, Start, Result registers"];
+  core [label="compute_core.sv\nSigned INT8 MAC\nout <= out + A*B"];
+  result [label="32-bit Accumulated Result"];
+
+  host -> iface [label="valid, write,\naddr, wdata"];
+  iface -> core [label="core_valid,\ncore_a, core_b"];
+  core -> iface [label="core_out"];
+  iface -> result [label="rdata"];
+}

@@ -26,3 +26,7 @@ This folder contains the final Milestone 4 deliverables for the HW4AI project. T
 
 | report/design_justification.md | Markdown source for final report | Report |
 | report/figures/roofline_final.png | Roofline figure referenced by report | Report figures |
+
+| report/figures/final_waveform.png | Final waveform image copied into report figures | Report figures |
+| report/figures/block_diagram.txt | Text block diagram for the submitted M4 architecture | Report figures |
+| report/figures/dataflow_diagram.txt | Text dataflow diagram for host-interface-MAC operation | Report figures |

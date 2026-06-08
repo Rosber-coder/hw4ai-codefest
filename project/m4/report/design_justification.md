@@ -122,6 +122,12 @@ If this project were continued, the next improvements would be adding a pipeline
 
 Figure 1: Final roofline plot, committed at `project/m4/report/figures/roofline_final.png`.
 
+Figure 2: Final waveform image, committed at `project/m4/report/figures/final_waveform.png`.
+
+Figure 3: Block diagram, committed at `project/m4/report/figures/block_diagram.txt`.
+
+Figure 4: Dataflow diagram, committed at `project/m4/report/figures/dataflow_diagram.txt`.
+
 ## Additional Implementation Details
 
 The final M4 design was intentionally kept small so that the full path from RTL to simulation and synthesis could be completed and documented. The compute core is centered around a single signed INT8 multiplier and a signed 32-bit accumulator. This choice matches the basic operation required in GEMM, where each output element is formed by repeatedly multiplying one value from matrix A with one value from matrix B and accumulating the product.

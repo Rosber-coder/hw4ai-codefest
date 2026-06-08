@@ -3,7 +3,7 @@
     "VERILOG_FILES": [
         "dir::../rtl/top.sv",
         "dir::../rtl/compute_core.sv",
-        "dir::../rtl/interface_ctrl.sv"
+        "dir::../rtl/interface.sv"
     ],
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 10,
